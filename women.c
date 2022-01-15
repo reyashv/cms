@@ -3,6 +3,24 @@
 #include<conio.h>
 #include<stdlib.h>
 #include"cms.h"
+#define WTSHIRTS 175
+#define WSHIRTS 275
+#define WJACKETS 375
+#define WDRESS 250
+#define WJEANS 475
+#define WSHORTS 175
+#define WPANTS 300
+#define WSKIRTS 275
+#define WNECKLACE 150
+#define WEARRINGS 125
+#define WRINGS 75
+#define WHAIRTIES 50
+#define WBELTS 200
+#define WWATCH 500
+#define WSHOES 500
+#define WHEELS 455
+#define WFLATS 275
+
 char cart[30][30];
 
 int womenswear()
@@ -16,9 +34,9 @@ int womenswear()
     printf("\t\t4.Women accesories\n");
     printf("\t\t");
     scanf("\t\t%d",&choice2);
-    if(choice2>4)
+    if(choice2>4 || choice2<0)
     {
-        printf("Error : Enter valid choice \n");
+        printf("\t\tEnter valid choice\n");
     }
     return choice2;
 }
@@ -28,25 +46,22 @@ int womenswear()
     int bill=0;
     int n;
     int x=0;
-    int rate[30];
     int amnt[30];
     int c1,i=0,j;
-    int ans;
+    int ans=0;
     int c=0;
     do
     {
         printf("\t\tEnter the index number of what you would like to buy in women's topwear\n");
         printf("\t\t");
-        scanf("%d",&c1);
         if(c1==1)
         {
             printf("\t\tEnter the no.of Tshirts you want to buy:");
             scanf("%d",&n);
             strcpy(cart[c],wtopwear[0]);
             x++;
-            rate[i]=250;
-            amnt[i]=rate[i]*n;
-            bill=bill+250*n;
+            amnt[i]=WTSHIRTS*n;
+            bill=bill+WTSHIRTS*n;
             i++;
         }
         else if(c1==2)
@@ -55,9 +70,8 @@ int womenswear()
             scanf("%d",&n);
             strcpy(cart[c],wtopwear[1]);
             x++;
-            rate[i]=275;
-            amnt[i]=rate[i]*n;
-            bill=bill+275*n;
+            amnt[i]=WSHIRTS*n;
+            bill=bill+WSHIRTS*n;
             i++;
         }
         else if(c1==3)
@@ -66,9 +80,8 @@ int womenswear()
             scanf("%d",&n);
             strcpy(cart[c],wtopwear[2]);
             x++;
-            rate[i]=350;
-            amnt[i]=rate[i]*n;
-            bill=bill+350*n;
+            amnt[i]=WDRESS*n;
+            bill=bill+WDRESS*n;
             i++;
         }
         else if(c1==4)
@@ -77,9 +90,8 @@ int womenswear()
             scanf("%d",&n);
             strcpy(cart[c],wtopwear[3]);
             x++;
-            rate[i]=300;
-            amnt[i]=rate[i]*n;
-            bill=bill+300*n;
+            amnt[i]=WJACKETS*n;
+            bill=bill+WJACKETS*n;
             i++;
         }
         else
@@ -96,8 +108,8 @@ int womenswear()
         printf("\t\tDo you want to add more in women's topwear?(1.yes / 2.no)\n");
         printf("\t\t");
         scanf("%d",&ans);
-        }while(ans!=2);
-        printbill(name,email,city,phone,cart,rate,n,amnt);
+        }while(ans == 1);
+        printbill(name,email,city,phone,cart,n,amnt);
         printf("\n\n\t\t THE TOTAL AMOUNT IS : %d",bill);
         printf("\n\n\t\t THANK YOU FOR SHOPPING :)");
         printf("\n\n\t\t\t --------------------------------------------\n");
@@ -110,7 +122,6 @@ int wobottomwear(char wbottomwear[4][10])
     int x=0;
     int ans;
     int amnt[30];
-    int rate[30];
     int c=0;
     do
     {
@@ -123,9 +134,8 @@ int wobottomwear(char wbottomwear[4][10])
             scanf("%d",&n);
             strcpy(cart[c],wbottomwear[0]);
             x++;
-            rate[i]=500;
-            amnt[i]=rate[i]*n;
-            bill=bill+500*n;
+            amnt[i]=WJEANS*n;
+            bill=bill+WJEANS*n;
         }
         else if(c1==2)
         {
@@ -133,9 +143,8 @@ int wobottomwear(char wbottomwear[4][10])
             scanf("%d",&n);
             strcpy(cart[c],wbottomwear[1]);
             x++;
-            rate[i]=200;
-            amnt[i]=rate[i]*n;
-            bill=bill+200*n;
+            amnt[i]=WSHORTS*n;
+            bill=bill+WSHORTS*n;
         }
         else if(c1==3)
         {
@@ -143,9 +152,8 @@ int wobottomwear(char wbottomwear[4][10])
             scanf("%d",&n);
             strcpy(cart[c],wbottomwear[2]);
             x++;
-            rate[i]=250;
-            amnt[i]=rate[i]*n;
-            bill=bill+250*n;
+            amnt[i]=WPANTS*n;
+            bill=bill+WPANTS*n;
         }
         else if(c1==4)
         {
@@ -154,9 +162,8 @@ int wobottomwear(char wbottomwear[4][10])
             scanf("%d",&n);
             strcpy(cart[c],wbottomwear[3]);
             x++;
-            rate[i]=300;
-            amnt[i]=rate[i]*n;
-            bill=bill+300*n;
+            amnt[i]=WSKIRTS*n;
+            bill=bill+WSKIRTS*n;
         }
         else
         {
@@ -171,8 +178,8 @@ int wobottomwear(char wbottomwear[4][10])
         printf("\t\tDo you want to add more in women's bottomwear?(1.yes / 2.no)\n");
         printf("\t\t");
         scanf("%d",&ans);
-        }while(ans!=2);
-        printbill(name,email,city,phone,cart,rate,n,amnt);
+        }while(ans==1);
+        printbill(name,email,city,phone,cart,n,amnt);
         printf("\n\n\t\t THE TOTAL AMOUNT IS : %d",bill);
         printf("\n\n\t\t THANK YOU FOR SHOPPING :)");
         printf("\n\n\t\t\t --------------------------------------------\n");
@@ -184,7 +191,6 @@ int woaccessories(char waccessories[6][20])
     int n;
     int x=0;
     int ans;
-    int rate[30];
     int amnt[30];
     int c=0;
     do
@@ -198,9 +204,8 @@ int woaccessories(char waccessories[6][20])
             scanf("%d",&n);
             strcpy(cart[c],waccessories[0]);
             x++;
-            rate[i]=150;
-            amnt[i]=rate[i]*n;
-            bill=bill+150*n;
+            amnt[i]=WNECKLACE*n;
+            bill=bill+WNECKLACE*n;
         }
         else if(c1==2)
         {
@@ -208,9 +213,8 @@ int woaccessories(char waccessories[6][20])
             scanf("%d",&n);
             strcpy(cart[c],waccessories[1]);
             x++;
-            rate[i]=120;
-            amnt[i]=rate[i]*n;
-            bill=bill+120*n;
+            amnt[i]=WEARRINGS*n;
+            bill=bill+WEARRINGS*n;
         }
         else if(c1==3)
         {
@@ -218,9 +222,8 @@ int woaccessories(char waccessories[6][20])
             scanf("%d",&n);
             strcpy(cart[c],waccessories[2]);
             x++;
-            rate[i]=100;
-            amnt[i]=rate[i]*n;
-            bill=bill+100*n;
+            amnt[i]=WRINGS*n;
+            bill=bill+WRINGS*n;
         }
         else if(c1==4)
         {
@@ -228,9 +231,8 @@ int woaccessories(char waccessories[6][20])
             scanf("%d",&n);
             strcpy(cart[c],waccessories[3]);
             x++;
-            rate[i]=50;
-            amnt[i]=rate[i]*n;
-            bill=bill+50*n;
+            amnt[i]=WHAIRTIES*n;
+            bill=bill+WHAIRTIES*n;
 
         }
         else if(c1==5)
@@ -239,9 +241,8 @@ int woaccessories(char waccessories[6][20])
             scanf("%d",&n);
             strcpy(cart[c],waccessories[4]);
             x++;
-            rate[i]=175;
-            amnt[i]=rate[i]*n;
-            bill=bill+175*n;
+            amnt[i]=WBELTS*n;
+            bill=bill+WBELTS*n;
         }
         else if(c1==6)
         {
@@ -249,9 +250,8 @@ int woaccessories(char waccessories[6][20])
             scanf("%d",&n);
             strcpy(cart[c],waccessories[5]);
             x++;
-            rate[i]=350;
-            amnt[i]=rate[i]*n;
-            bill=bill+350*n;
+            amnt[i]=WWATCH*n;
+            bill=bill+WWATCH*n;
         }
         else
         {
@@ -266,8 +266,8 @@ int woaccessories(char waccessories[6][20])
         printf("\t\tDo you want to add more in women's accessories?(1.yes / 2.no)\n");
         printf("\t\t");
         scanf("%d",&ans);
-        }while(ans!=2);
-        printbill(name,email,city,phone,cart,rate,n,amnt);
+        }while(ans==1);
+        printbill(name,email,city,phone,cart,n,amnt);
         printf("\n\n\t\t THE TOTAL AMOUNT IS : %d",bill);
         printf("\n\n\t\t THANK YOU FOR SHOPPING :)");
         printf("\n\n\t\t\t --------------------------------------------\n");
@@ -280,7 +280,6 @@ int wofootwear(char wfootwear[3][10])
     int x=0;
     int ans;
     int amnt[30];
-    int rate[30];
     int c=0;
     do
     {
@@ -293,9 +292,8 @@ int wofootwear(char wfootwear[3][10])
             scanf("%d",&n);
             strcpy(cart[c],wfootwear[0]);
             x++;
-            rate[i]=500;
-            amnt[i]=rate[i]*n;
-            bill=bill+500*n;
+            amnt[i]=WSHOES*n;
+            bill=bill+WSHOES*n;
         }
         else if(c1==2)
         {
@@ -303,9 +301,8 @@ int wofootwear(char wfootwear[3][10])
             scanf("%d",&n);
             strcpy(cart[c],wfootwear[1]);
             x++;
-            rate[i]=550;
-            amnt[i]=rate[i]*n;
-            bill=bill+550*n;
+            amnt[i]=WHEELS*n;
+            bill=bill+WHEELS*n;
         }
         else if(c1==3)
         {
@@ -313,9 +310,8 @@ int wofootwear(char wfootwear[3][10])
             scanf("%d",&n);
             strcpy(cart[c],wfootwear[2]);
             x++;
-            rate[i]=400;
-            amnt[i]=rate[i]*n;
-            bill=bill+400*n;
+            amnt[i]=WFLATS*n;
+            bill=bill+WFLATS*n;
         }
         else
         {
@@ -331,8 +327,8 @@ int wofootwear(char wfootwear[3][10])
         printf("\t\tDo you want to add more in women's footwear?(1.yes / 2.no)\n");
         printf("\t\t");
         scanf("%d",&ans);
-        }while(ans!=2);
-        printbill(name,email,city,phone,cart,rate,n,amnt);
+        }while(ans==1);
+        printbill(name,email,city,phone,cart,n,amnt);
         printf("\n\n\t\t THE TOTAL AMOUNT IS : %d",bill);
         printf("\n\n\t\t THANK YOU FOR SHOPPING :)");
         printf("\n\n\t\t\t --------------------------------------------\n");

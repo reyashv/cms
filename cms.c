@@ -5,7 +5,6 @@
 #include"cms.h"
 
 int choice;
-int sample;
 int i;
 char wtopwear[4][10]={"1.Tshirts","2.Shirts","3.Dress","4.Jackets"};
 char wbottomwear[4][10]={"1.Jeans","2.Shorts","3.Pants","4.Skirts"};
@@ -16,13 +15,14 @@ char mbottomwear[3][10]={"1.Jeans","2.Shorts","3.Pants"};
 char mfootwear[3][20]={"1.Shoes","2.Slippers","3.Formal shoes"};
 char maccessories[3][10]={"1.Belts","2.wallet","3.watch"};
 char cart[30][30];
+char clothing[6];
 //creating function for printing the bill
 int printbill(char name[50],char email[20],char city[30],int phone,int bill)
 {
     printf("\n\n\t\t\t---------------------------------------------\n");
     printf("\n\n\t\t\t------------ CLOTHING STORE BILL ------------");
     printf("\n\n\t\t NAME OF THE CUSTOMER: %s",name);
-    printf("\n\n\t\t EMAIL: %s",email);
+    printf("\n\n\t\t EMAIL: %s@gmail.com",email);
     printf("\n\n\t\t ADDRESS: %s",city);
     printf("\n\n\t\t PHONE NUMBER: %d",phone);
 }
@@ -37,24 +37,23 @@ int main()
     scanf("%[^\n]s",name);
     printf("\t\tEnter your Gender(female/male):");
     scanf("%*c%[^\n]s",gender);
-    printf("\t\tEnter your Email(--------@gmail.com):");
+    printf("\t\tEnter your username of Email(--------@gmail.com):");
     scanf("%*c%[^\n]s",email);
     printf("\t\tEnter your City:");
     scanf("%*c%[^\n]s",city);
     printf("\t\tEnter your Phone number:");
     scanf("%ld",&phone);
+    printf("\t\tDo you want to search for male or female clothing?(male/female)\n");
+    printf("\t\t");
+    scanf("%s",clothing);
     printf("\t\tThese are the clothing available to choose from: \n");
-    if(strcmp(gender,"female")==0)
+    if(strcmp(clothing,"female")==0)
     {
         choice=1;
     }
-    else if(strcmp(gender,"male")==0)
+    else if(strcmp(clothing,"male")==0)
     {
         choice=2;
-    }
-    else
-    {
-        printf("invalid input of gender");
     }
     switch(choice)
     {
