@@ -5,6 +5,7 @@
 #include"cms.h"
 
 int choice;
+int sample;
 int i;
 char wtopwear[4][10]={"1.Tshirts","2.Shirts","3.Dress","4.Jackets"};
 char wbottomwear[4][10]={"1.Jeans","2.Shorts","3.Pants","4.Skirts"};
