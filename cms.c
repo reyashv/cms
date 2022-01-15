@@ -43,25 +43,20 @@ int main()
     scanf("%*c%[^\n]s",city);
     printf("\t\tEnter your Phone number:");
     scanf("%ld",&phone);
-    printf("\t\tDo you want to search for male or female clothing?(male/female)\n");
+    printf("\t\tEnter your choice\n");
+    printf("\t\t1. Female Clothing\n");
+    printf("\t\t2. Male Clothing\n");
+    printf("\t\t3. Exit\n");
     printf("\t\t");
-    scanf("%s",clothing);
+    scanf("%d",&choice);
     printf("\t\tThese are the clothing available to choose from: \n");
-    if(strcmp(clothing,"female")==0)
+    while (choice == 1 || choice == 2)
     {
-        choice=1;
-    }
-    else if(strcmp(clothing,"male")==0)
-    {
-        choice=2;
-    }
-    switch(choice)
-    {
-        case 1:
+        switch(choice)
         {
-            int answ;
-            do
+            case 1:
             {
+                int answ;
                 i=womenswear();
                 switch(i)
                 {
@@ -86,7 +81,7 @@ int main()
                         }
                         wotopwear(wtopwear);
                         break;
-                    }
+                    }//end of case1
 
                     case 2:
                     {
@@ -109,7 +104,7 @@ int main()
                         }
                         wobottomwear(wbottomwear);
                         break;
-                    }
+                    }//end of case2
                     case 3:
                     {
                         printf("\t\tThe women accessories available are: \n");
@@ -131,7 +126,7 @@ int main()
                         }
                         woaccessories(waccessories);
                         break;
-                    }
+                    }//end of case3
                     case 4:
                     {
                         printf("\t\tThe women footwear available are: \n");
@@ -153,24 +148,28 @@ int main()
                         }
                         wofootwear(wfootwear);
                         break;
+                    }//end of case4
+                    case 5:
+                    {
+                        printf("\t\tEnter your choice\n");
+                        printf("\t\t1. Female Clothing\n");
+                        printf("\t\t2. Male Clothing\n");
+                        printf("\t\t3. Exit\n");
+                        printf("\t\t");
+                        scanf("%d",&choice);
+                        break;
                     }
-                    printf("\t\tThe total amount is : %d",bill);
-                    printf("\t\tDo you want to select anything else in women's wear?(1.yes / 2.no)\n");
-                    scanf("%d",&answ);
-                    }
-                    }while(answ!=2);
-                break;
-        }
-        case 2:
-			{
-				int ansm;
-				do
-				{
-                    i=menswear();
-					switch(i)
-					{
-						case 1:
-						{
+                    }//end of switch
+            break;
+        }//end of case1
+            case 2:
+            {
+                int ansm;
+                i=menswear();
+                switch(i)
+                {
+                    case 1:
+                    {
                             printf("\t\tThe men topwear available are: \n");
                             FILE *a ;
                             char b[50];
@@ -191,8 +190,8 @@ int main()
 							motopwear(mtopwear);
 							break;
 						}
-						case 2:
-						{
+                    case 2:
+                    {
 							printf("\t\tThe men bottomwear available are: \n");
                             FILE *a ;
                             char b[50];
@@ -213,8 +212,8 @@ int main()
                             mobottomwear(mbottomwear);
                             break;
 						}
-						case 3:
-						{
+                    case 3:
+                    {
 							printf("\t\tThe men accessories available are: \n");
 							FILE *a ;
                             char b[50];
@@ -235,8 +234,8 @@ int main()
 							moaccessories(maccessories);
 							break;
 						}
-						case 4:
-						{
+                    case 4:
+                    {
 							printf("\t\tThe men footwear available are: \n");
 							FILE *a ;
                             char b[50];
@@ -257,11 +256,19 @@ int main()
 							mofootwear(mfootwear);
 							break;
 						}
-						printf("\t\tThe total amount is : %d",bill);
-						printf("\t\tDo you want to select anything else in women's wear?(1.yes / 2.no)\n");
-						scanf("%d",&ansm);
-					}}while(ansm!=2);
-				break;
-            }
-    }
-}
+                    case 5:
+                    {
+                        printf("\t\tEnter your choice\n");
+                        printf("\t\t1. Female Clothing\n");
+                        printf("\t\t2. Male Clothing\n");
+                        printf("\t\t3. Exit\n");
+                        printf("\t\t");
+                        scanf("%d",&choice);
+                        break;
+                    }
+                }
+            break;
+        }//end of case2
+    }//end of switch
+}//end of while
+}//end of main

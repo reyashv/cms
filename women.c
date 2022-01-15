@@ -21,23 +21,24 @@
 #define WHEELS 455
 #define WFLATS 275
 
-char cart[30][30];
+char cart[50][50];
 
 int womenswear()
 {
     int i,choice2,bill;
-    printf("\n");
-    printf("\t\tEnter which one you would like to see\n");
-    printf("\t\t1.Women topwear\n");
-    printf("\t\t2.Women bottomwear\n");
-    printf("\t\t3.Women footwear\n");
-    printf("\t\t4.Women accesories\n");
-    printf("\t\t");
-    scanf("\t\t%d",&choice2);
-    if(choice2>4 || choice2<0)
+    do
     {
-        printf("\t\tEnter valid choice\n");
+        printf("\n");
+        printf("\t\tEnter which one you would like to see\n");
+        printf("\t\t1.Women topwear\n");
+        printf("\t\t2.Women bottomwear\n");
+        printf("\t\t3.Women accessories\n");
+        printf("\t\t4.Women footwear\n");
+        printf("\t\t5.Go back to previous menu\n");
+        printf("\t\t");
+        scanf("%d",&choice2);
     }
+    while(choice2>6);
     return choice2;
 }
 //creating function for women's topwear
@@ -52,52 +53,56 @@ int womenswear()
     int c=0;
     do
     {
+        printf("\n");
         printf("\t\tEnter the index number of what you would like to buy in women's topwear\n");
         printf("\t\t");
+        scanf("%d",&c1);
         if(c1==1)
         {
+            printf("\n");
             printf("\t\tEnter the no.of Tshirts you want to buy:");
             scanf("%d",&n);
             strcpy(cart[c],wtopwear[0]);
             x++;
             amnt[i]=WTSHIRTS*n;
             bill=bill+WTSHIRTS*n;
-            i++;
         }
         else if(c1==2)
         {
+            printf("\n");
             printf("\t\tEnter the no.of Shirts you want to buy:");
             scanf("%d",&n);
             strcpy(cart[c],wtopwear[1]);
             x++;
             amnt[i]=WSHIRTS*n;
             bill=bill+WSHIRTS*n;
-            i++;
         }
         else if(c1==3)
         {
+            printf("\n");
             printf("\t\tEnter the no.of Dresses you want to buy:");
             scanf("%d",&n);
             strcpy(cart[c],wtopwear[2]);
             x++;
             amnt[i]=WDRESS*n;
             bill=bill+WDRESS*n;
-            i++;
         }
         else if(c1==4)
         {
+            printf("\n");
             printf("\t\tEnter the no.of Jackets you want to buy:");
             scanf("%d",&n);
             strcpy(cart[c],wtopwear[3]);
             x++;
             amnt[i]=WJACKETS*n;
             bill=bill+WJACKETS*n;
-            i++;
         }
         else
         {
+            printf("\n");
             printf("\t\tError : Enter valid index number \n");
         }
+        printf("\n");
         printf("\t\tYour cart has:\n");
         c++;
         for(j=0;j<=c;j++)
@@ -105,6 +110,7 @@ int womenswear()
             printf("\t\t%s",cart[j]);
             printf("\n");
         }
+        printf("\n");
         printf("\t\tDo you want to add more in women's topwear?(1.yes / 2.no)\n");
         printf("\t\t");
         scanf("%d",&ans);
@@ -125,11 +131,13 @@ int wobottomwear(char wbottomwear[4][10])
     int c=0;
     do
     {
+        printf("\n");
         printf("\t\tEnter the index number of what you would like to buy in women's bottomwear\n");
         printf("\t\t");
         scanf("%d",&c1);
         if(c1==1)
         {
+            printf("\n");
             printf("\t\tEnter the no.of Jeans you want to buy:");
             scanf("%d",&n);
             strcpy(cart[c],wbottomwear[0]);
@@ -139,6 +147,7 @@ int wobottomwear(char wbottomwear[4][10])
         }
         else if(c1==2)
         {
+            printf("\n");
             printf("\t\tEnter the no.of Shorts you want to buy:");
             scanf("%d",&n);
             strcpy(cart[c],wbottomwear[1]);
@@ -148,6 +157,7 @@ int wobottomwear(char wbottomwear[4][10])
         }
         else if(c1==3)
         {
+            printf("\n");
             printf("\t\tEnter the no.of Pants you want to buy:");
             scanf("%d",&n);
             strcpy(cart[c],wbottomwear[2]);
@@ -157,6 +167,7 @@ int wobottomwear(char wbottomwear[4][10])
         }
         else if(c1==4)
         {
+            printf("\n");
             printf("\t\tEnter the no.of Skirts you want to buy:");
             printf("\t\t");
             scanf("%d",&n);
@@ -167,6 +178,7 @@ int wobottomwear(char wbottomwear[4][10])
         }
         else
         {
+            printf("\n");
             printf("\t\tEnter valid index number \n");
         }
         printf("\t\tYour cart has:\n");
@@ -175,6 +187,7 @@ int wobottomwear(char wbottomwear[4][10])
             printf("\t\t%s\n",cart[j]);
         }
         c++;
+        printf("\n");
         printf("\t\tDo you want to add more in women's bottomwear?(1.yes / 2.no)\n");
         printf("\t\t");
         scanf("%d",&ans);
@@ -187,7 +200,7 @@ int wobottomwear(char wbottomwear[4][10])
 //creating function for women's accessories
 int woaccessories(char waccessories[6][20])
 {
-    int c1,bill,i,j;
+    int c1,bill=0,i=0,j;
     int n;
     int x=0;
     int ans;
@@ -195,11 +208,13 @@ int woaccessories(char waccessories[6][20])
     int c=0;
     do
     {
+        printf("\n");
         printf("\t\tEnter the number of what you would like to buy in women's accessories\n");
         printf("\t\t");
         scanf("%d",&c1);
         if(c1==1)
         {
+            printf("\n");
             printf("\t\tEnter the no.of Necklaces you want to buy:");
             scanf("%d",&n);
             strcpy(cart[c],waccessories[0]);
@@ -209,6 +224,7 @@ int woaccessories(char waccessories[6][20])
         }
         else if(c1==2)
         {
+            printf("\n");
             printf("\t\tEnter the no.of Earrings you want to buy:");
             scanf("%d",&n);
             strcpy(cart[c],waccessories[1]);
@@ -218,6 +234,7 @@ int woaccessories(char waccessories[6][20])
         }
         else if(c1==3)
         {
+            printf("\n");
             printf("\t\tEnter the no.of Rings you want to buy:");
             scanf("%d",&n);
             strcpy(cart[c],waccessories[2]);
@@ -227,6 +244,7 @@ int woaccessories(char waccessories[6][20])
         }
         else if(c1==4)
         {
+            printf("\n");
             printf("\t\tEnter the no.of Hairties you want to buy:");
             scanf("%d",&n);
             strcpy(cart[c],waccessories[3]);
@@ -237,6 +255,7 @@ int woaccessories(char waccessories[6][20])
         }
         else if(c1==5)
         {
+            printf("\n");
             printf("\t\tEnter the no.of Belts you want to buy:");
             scanf("%d",&n);
             strcpy(cart[c],waccessories[4]);
@@ -246,6 +265,7 @@ int woaccessories(char waccessories[6][20])
         }
         else if(c1==6)
         {
+            printf("\n");
             printf("\t\tEnter the no.of Watches you want to buy:");
             scanf("%d",&n);
             strcpy(cart[c],waccessories[5]);
@@ -255,14 +275,18 @@ int woaccessories(char waccessories[6][20])
         }
         else
         {
+            printf("\n");
             printf("\t\tEnter valid index number \n");
         }
+        printf("\n");
         printf("\t\tYour cart has:\n");
         for(j=0;j<=c;j++)
         {
-            printf("\t\t%s\n",cart[j]);
+            printf("\t\t%s",cart[j]);
+            printf("\n");
         }
         c++;
+        printf("\n");
         printf("\t\tDo you want to add more in women's accessories?(1.yes / 2.no)\n");
         printf("\t\t");
         scanf("%d",&ans);
@@ -275,7 +299,7 @@ int woaccessories(char waccessories[6][20])
 //creating function for women's footwear
 int wofootwear(char wfootwear[3][10])
 {
-    int c1,bill,i,j;
+    int c1,bill=0,i=0,j;
     int n;
     int x=0;
     int ans;
@@ -283,11 +307,13 @@ int wofootwear(char wfootwear[3][10])
     int c=0;
     do
     {
+        printf("\n");
         printf("\t\tEnter the number of what you would like to buy in women's footwear\n");
         printf("\t\t");
         scanf("%d",&c1);
         if(c1==1)
         {
+            printf("\n");
             printf("\t\tEnter the no.of Shoes you want to buy:");
             scanf("%d",&n);
             strcpy(cart[c],wfootwear[0]);
@@ -297,6 +323,7 @@ int wofootwear(char wfootwear[3][10])
         }
         else if(c1==2)
         {
+            printf("\n");
             printf("\t\tEnter the no.of Heels you want to buy:");
             scanf("%d",&n);
             strcpy(cart[c],wfootwear[1]);
@@ -306,6 +333,7 @@ int wofootwear(char wfootwear[3][10])
         }
         else if(c1==3)
         {
+            printf("\n");
             printf("\t\tEnter the no.of Flats you want to buy:");
             scanf("%d",&n);
             strcpy(cart[c],wfootwear[2]);
@@ -315,15 +343,18 @@ int wofootwear(char wfootwear[3][10])
         }
         else
         {
+            printf("\n");
             printf("\t\tEnter valid index number \n");
         }
         int j;
+        printf("\n");
         printf("\t\tYour cart has:\n");
         for(j=0;j<=c;j++)
         {
             printf("\t\t%s\n",cart[j]);
         }
         c++;
+        printf("\n");
         printf("\t\tDo you want to add more in women's footwear?(1.yes / 2.no)\n");
         printf("\t\t");
         scanf("%d",&ans);
