@@ -3,31 +3,39 @@
 #include<conio.h>
 #include<stdlib.h>
 #include"cms.h"
-#define MTSHIRTS 275
-#define MSHIRTS 375
-#define MJACKETS 475
-#define MHOODIES 455
-#define MJEANS 500
-#define MSHORTS 175
-#define MPANTS 375
-#define MSHOES 455
-#define MSLIPPERS 255
-#define MFORMALSHOES 475
-#define MBELTS 375
-#define MWALLET 455
-#define MWATCH 575
-
+enum mtype
+{
+    MTSHIRTS,
+    MSHIRTS,
+    MJACKETS,
+    MHOODIES,
+    MJEANS,
+    MSHORTS,
+    MPANTS,
+    MBELTS,
+    MWALLETS,
+    MWATCHES,
+    MSHOES,
+    MSLIPPERS,
+    MFORMALSHOES
+};
+int mcost[13]={275,375,475,455,500,175,375,455,255,475,375,455,575};
+int mstocks[13]={10,10,10,10,10,10,10,10,10,10,10,10,10};
 char cart[30][30];
+int count[30]={0};
+extern struct billentry Items[20];
+extern int numItems;
+
 //creating function for menswear
 int menswear()
 {
-    int i,choice3,bill;
+    int i,choice3;
     do
     {
-        printf("\t\t1.Men topwear\n");
-        printf("\t\t2.Men bottomwear\n");
-        printf("\t\t3.Men accessories\n");
-        printf("\t\t4.Men footwear\n");
+        printf("\t\t1.Mens topwear\n");
+        printf("\t\t2.Mens bottomwear\n");
+        printf("\t\t3.Mens accessories\n");
+        printf("\t\t4.Mens footwear\n");
         printf("\t\t5.Go back to previous menu\n");
         printf("\t\tEnter which one you would like to see ");
         scanf("%d",&choice3);
@@ -52,43 +60,115 @@ int motopwear(char mtopwear[4][10])
         scanf("%d",&c1);
         if(c1==1)
         {
-            printf("\n");
-            printf("\t\tEnter the no.of Tshirts you want to buy:");
-            scanf("%d",&n);
-            strcpy(cart[c],mtopwear[0]);
-            x++;
-            amnt[i]=MTSHIRTS*n;
-            bill=bill+MTSHIRTS*n;
+            if(mstocks[MTSHIRTS]>0)
+            {
+                printf("\n");
+                printf("\t\tEnter the no.of Tshirts you want to buy:");
+                scanf("%d",&n);
+                if (mstocks[MTSHIRTS]-n > 0)
+                {
+                    mstocks[MTSHIRTS]-=n;
+                }
+                else
+                {
+                    printf("Only %d Tshirts is available, will add this in cart\n",mstocks[MTSHIRTS]);
+                    n=mstocks[MTSHIRTS];
+                    mstocks[MTSHIRTS]=0;
+                }
+                strcpy(cart[c],mtopwear[0]);
+                count[c]=n;
+                x++;
+                numItems++;
+                Items[numItems].quantity = n;
+                Items[numItems].cost=mcost[MTSHIRTS]*n;
+                strcpy(Items[numItems].itemname,"Men Tshirts");
+            }
+            else
+                printf("No Stock available\n");
         }
         else if(c1==2)
         {
-            printf("\n");
-            printf("\t\tEnter the no.of Shirts you want to buy:");
-            scanf("%d",&n);
-            strcpy(cart[c],mtopwear[1]);
-            x++;
-            amnt[i]=MSHIRTS*n;
-            bill=bill+MSHIRTS*n;
+            if(mstocks[MSHIRTS]>0)
+            {
+                printf("\n");
+                printf("\t\tEnter the no.of Shirts you want to buy:");
+                scanf("%d",&n);
+                if (mstocks[MSHIRTS]-n > 0)
+                {
+                    mstocks[MSHIRTS]-=n;
+                }
+                else
+                {
+                    printf("Only %d Shirts is available, will add this in cart\n",mstocks[MSHIRTS]);
+                    n=mstocks[MSHIRTS];
+                    mstocks[MSHIRTS]=0;
+                }
+                strcpy(cart[c],mtopwear[1]);
+                count[c]=n;
+                x++;
+                numItems++;
+                Items[numItems].quantity = n;
+                Items[numItems].cost=mcost[MSHIRTS]*n;
+                strcpy(Items[numItems].itemname,"Men Shirts");
+            }
+            else
+                printf("No Stock available\n");;
         }
         else if(c1==3)
         {
-            printf("\n");
-            printf("\t\tEnter the no.of Jackets you want to buy:");
-            scanf("%d",&n);
-            strcpy(cart[c],mtopwear[2]);
-            x++;
-            amnt[i]=MJACKETS*n;
-            bill=bill+MJACKETS*n;
+            if(mstocks[MJACKETS]>0)
+            {
+                printf("\n");
+                printf("\t\tEnter the no.of Jackets you want to buy:");
+                scanf("%d",&n);
+                if (mstocks[MJACKETS]-n > 0)
+                {
+                    mstocks[MJACKETS]-=n;
+                }
+                else
+                {
+                    printf("Only %d Jackets is available, will add this in cart\n",mstocks[MJACKETS]);
+                    n=mstocks[MJACKETS];
+                    mstocks[MJACKETS]=0;
+                }
+                strcpy(cart[c],mtopwear[2]);
+                count[c]=n;
+                x++;
+                numItems++;
+                Items[numItems].quantity = n;
+                Items[numItems].cost=mcost[MJACKETS]*n;
+                strcpy(Items[numItems].itemname,"Men Jackets");
+            }
+            else
+                printf("No Stock available\n");
         }
         else if(c1==4)
         {
-            printf("\n");
-            printf("\t\tEnter the no.of Hoodies you want to buy:");
-            scanf("%d",&n);
-            strcpy(cart[c],mtopwear[3]);
-            x++;
-            amnt[i]=MHOODIES*n;
-            bill=bill+MHOODIES*n;
+            if(mstocks[MHOODIES]>0)
+            {
+                printf("\n");
+                printf("\t\tEnter the no.of Hoodies you want to buy:");
+                scanf("%d",&n);
+                if (mstocks[MHOODIES]-n > 0)
+                {
+                    mstocks[MHOODIES]-=n;
+                }
+                else
+                {
+                    printf("Only %d Hoodies is available, will add this in cart\n",mstocks[MHOODIES]);
+                    n=mstocks[MHOODIES];
+                    mstocks[MHOODIES]=0;
+                }
+                strcpy(cart[c],mtopwear[3]);
+                count[c]=n;
+                x++;
+                numItems++;
+                Items[numItems].quantity = n;
+                Items[numItems].cost=mcost[MHOODIES]*n;
+                strcpy(Items[numItems].itemname,"Men Hoodies");
+            }
+            else
+                printf("No Stock available\n");
         }
         else
         {
@@ -99,7 +179,7 @@ int motopwear(char mtopwear[4][10])
         printf("\t\tYour cart has:\n");
         for(j=0;j<=c;j++)
         {
-            printf("\t\t%s",cart[j]);
+            printf("\t\t %s - Qty : %d",cart[j],count[j]);
             printf("\n");
         }
         c++;
@@ -108,10 +188,7 @@ int motopwear(char mtopwear[4][10])
         printf("\t\t");
         scanf("%d",&ans);
         }while(ans==1);
-        printbill(name,email,city,phone,cart,n,amnt);
-        printf("\n\n\t\t THE TOTAL AMOUNT IS : %d",bill);
-        printf("\n\n\t\t THANK YOU FOR SHOPPING :)");
-        printf("\n\n\t\t\t --------------------------------------------\n");
+        printbill(name,email,city,phone);
 }
 //creating function for men's bottomwear
 int mobottomwear(char mbottomwear[3][10])
@@ -130,33 +207,87 @@ int mobottomwear(char mbottomwear[3][10])
         scanf("%d",&c1);
         if(c1==1)
         {
-            printf("\n");
-            printf("\t\tEnter the no.of Jeans you want to buy:");
-            scanf("%d",&n);
-            strcpy(cart[c],mbottomwear[0]);
-            x++;
-            amnt[i]=MJEANS*n;
-            bill=bill+MJEANS*n;
+            if(mstocks[MJEANS]>0)
+            {
+                printf("\n");
+                printf("\t\tEnter the no.of Jeans you want to buy:");
+                scanf("%d",&n);
+                if (mstocks[MJEANS]-n > 0)
+                {
+                    mstocks[MJEANS]-=n;
+                }
+                else
+                {
+                    printf("Only %d Jeans is available, will add this in cart\n",mstocks[MJEANS]);
+                    n=mstocks[MJEANS];
+                    mstocks[MJEANS]=0;
+                }
+                strcpy(cart[c],mbottomwear[0]);
+                count[c]=n;
+                x++;
+                numItems++;
+                Items[numItems].quantity = n;
+                Items[numItems].cost=mcost[MJEANS]*n;
+                strcpy(Items[numItems].itemname,"Men Jeans");
+            }
+            else
+                printf("No Stock available\n");
         }
         else if(c1==2)
         {
-            printf("\n");
-            printf("\t\tEnter the no.of Shorts you want to buy:");
-            scanf("%d",&n);
-            strcpy(cart[c],mbottomwear[1]);
-            x++;
-            amnt[i]=MSHORTS*n;
-            bill=bill+MSHORTS*n;
+            if(mstocks[MSHORTS]>0)
+            {
+                printf("\n");
+                printf("\t\tEnter the no.of Shorts you want to buy:");
+                scanf("%d",&n);
+                if (mstocks[MSHORTS]-n > 0)
+                {
+                    mstocks[MSHORTS]-=n;
+                }
+                else
+                {
+                    printf("Only %d Shorts is available, will add this in cart\n",mstocks[MSHORTS]);
+                    n=mstocks[MSHORTS];
+                    mstocks[MSHORTS]=0;
+                }
+                strcpy(cart[c],mbottomwear[1]);
+                count[c]=n;
+                x++;
+                numItems++;
+                Items[numItems].quantity = n;
+                Items[numItems].cost=mcost[MSHORTS]*n;
+                strcpy(Items[numItems].itemname,"Men Shorts");
+            }
+            else
+                printf("No Stock available\n");
         }
         else if(c1==3)
         {
-            printf("\n");
-            printf("Enter the no.of Pants you want to buy:");
-            scanf("%d",&n);
-            strcpy(cart[c],mbottomwear[2]);
-            x++;
-            amnt[i]=MPANTS*n;
-            bill=bill+MPANTS*n;
+            if(mstocks[MPANTS]>0)
+            {
+                printf("\n");
+                printf("\t\tEnter the no.of Pants you want to buy:");
+                scanf("%d",&n);
+                if (mstocks[MPANTS]-n > 0)
+                {
+                    mstocks[MPANTS]-=n;
+                }
+                else
+                {
+                    printf("Only %d Pants is available, will add this in cart\n",mstocks[MPANTS]);
+                    n=mstocks[MPANTS];
+                    mstocks[MPANTS]=0;
+                }
+                strcpy(cart[c],mbottomwear[2]);
+                count[c]=n;
+                x++;
+                numItems++;
+                Items[numItems].quantity = n;
+                Items[numItems].cost=mcost[MPANTS]*n;
+                strcpy(Items[numItems].itemname,"Men Pants");
+            }
+            else
+                printf("No Stock available\n");
         }
         else
         {
@@ -175,10 +306,7 @@ int mobottomwear(char mbottomwear[3][10])
         printf("\t\t");
         scanf("%d",&ans);
         }while(ans==1);
-        printbill(name,email,city,phone,cart,n,amnt);
-        printf("\n\n\t\t THE TOTAL AMOUNT IS : %d",bill);
-        printf("\n\n\t\t THANK YOU FOR SHOPPING :)");
-        printf("\n\n\t\t\t --------------------------------------------\n");
+        printbill(name,email,city,phone);
 }
 //creating function for men's accessories
 int moaccessories(char maccessories[3][10])
@@ -197,33 +325,87 @@ int moaccessories(char maccessories[3][10])
         scanf("%d",&c1);
         if(c1==1)
         {
-            printf("\n");
-            printf("\t\tEnter the no.of Belts you want to buy:");
-            scanf("%d",&n);
-            strcpy(cart[c],maccessories[0]);
-            x++;
-            amnt[i]=MBELTS*n;
-            bill=bill+MBELTS*n;
+            if(mstocks[MBELTS]>0)
+            {
+                printf("\n");
+                printf("\t\tEnter the no.of Belts you want to buy:");
+                scanf("%d",&n);
+                if (mstocks[MBELTS]-n > 0)
+                {
+                    mstocks[MBELTS]-=n;
+                }
+                else
+                {
+                    printf("Only %d Belts is available, will add this in cart\n",mstocks[MBELTS]);
+                    n=mstocks[MBELTS];
+                    mstocks[MBELTS]=0;
+                }
+                strcpy(cart[c],maccessories[0]);
+                count[c]=n;
+                x++;
+                numItems++;
+                Items[numItems].quantity = n;
+                Items[numItems].cost=mcost[MBELTS]*n;
+                strcpy(Items[numItems].itemname,"Men Belts");
+            }
+            else
+                printf("No Stock available\n");
         }
         else if(c1==2)
         {
-            printf("\n");
-            printf("\t\tEnter the no.of Wallets you want to buy:");
-            scanf("%d",&n);
-            strcpy(cart[c],maccessories[1]);
-            x++;
-            amnt[i]=MWALLET*n;
-            bill=bill+MWALLET*n;
+            if(mstocks[MWALLETS]>0)
+            {
+                printf("\n");
+                printf("\t\tEnter the no.of Wallets you want to buy:");
+                scanf("%d",&n);
+                if (mstocks[MWALLETS]-n > 0)
+                {
+                    mstocks[MWALLETS]-=n;
+                }
+                else
+                {
+                    printf("Only %d Wallets is available, will add this in cart\n",mstocks[MWALLETS]);
+                    n=mstocks[MWALLETS];
+                    mstocks[MWALLETS]=0;
+                }
+                strcpy(cart[c],maccessories[1]);
+                count[c]=n;
+                x++;
+                numItems++;
+                Items[numItems].quantity = n;
+                Items[numItems].cost=mcost[MWALLETS]*n;
+                strcpy(Items[numItems].itemname,"Men Wallets");
+            }
+            else
+                printf("No Stock available\n");
         }
         else if(c1==3)
         {
-            printf("\n");
-            printf("\t\tEnter the no.of Watches you want to buy:");
-            scanf("%d",&n);
-            strcpy(cart[c],maccessories[2]);
-            x++;
-            amnt[i]=MWATCH*n;
-            bill=bill+MWATCH*n;
+            if(mstocks[MWATCHES]>0)
+            {
+                printf("\n");
+                printf("\t\tEnter the no.of Watches you want to buy:");
+                scanf("%d",&n);
+                if (mstocks[MWATCHES]-n > 0)
+                {
+                    mstocks[MWATCHES]-=n;
+                }
+                else
+                {
+                    printf("Only %d Watches is available, will add this in cart\n",mstocks[MWATCHES]);
+                    n=mstocks[MWATCHES];
+                    mstocks[MWATCHES]=0;
+                }
+                strcpy(cart[c],maccessories[2]);
+                count[c]=n;
+                x++;
+                numItems++;
+                Items[numItems].quantity = n;
+                Items[numItems].cost=mcost[MWATCHES]*n;
+                strcpy(Items[numItems].itemname,"Men Watches");
+            }
+            else
+                printf("No Stock available\n");
         }
         else
         {
@@ -243,9 +425,6 @@ int moaccessories(char maccessories[3][10])
         scanf("%d",&ans);
         }while(ans==1);
         printbill(name,email,city,phone,cart,n,amnt);
-        printf("\n\n\t\t THE TOTAL AMOUNT IS : %d",bill);
-        printf("\n\n\t\t THANK YOU FOR SHOPPING :)");
-        printf("\n\n\t\t\t --------------------------------------------\n");
 }
 //creating function for men's footwear
 int mofootwear(char mfootwear[4][10])
@@ -266,33 +445,87 @@ int mofootwear(char mfootwear[4][10])
         scanf("%d",&c1);
         if(c1==1)
         {
-            printf("\n");
-            printf("\t\tEnter the no.of Shoes you want to buy:");
-            scanf("%d",&n);
-            strcpy(cart[c],mfootwear[0]);
-            x++;
-            amnt[i]=MSHOES*n;
-            bill=bill+MSHOES;
+            if(mstocks[MSHOES]>0)
+            {
+                printf("\n");
+                printf("\t\tEnter the no.of Shoes you want to buy:");
+                scanf("%d",&n);
+                if (mstocks[MSHOES]-n > 0)
+                {
+                    mstocks[MSHOES]-=n;
+                }
+                else
+                {
+                    printf("Only %d Shoes is available, will add this in cart\n",mstocks[MSHOES]);
+                    n=mstocks[MSHOES];
+                    mstocks[MSHOES]=0;
+                }
+                strcpy(cart[c],mfootwear[0]);
+                count[c]=n;
+                x++;
+                numItems++;
+                Items[numItems].quantity = n;
+                Items[numItems].cost=mcost[MSHOES]*n;
+                strcpy(Items[numItems].itemname,"Men Shoes");
+            }
+            else
+                printf("No Stock available\n");
         }
         else if(c1==2)
         {
-            printf("\n");
-            printf("\t\tEnter the no.of Slippers you want to buy:");
-            scanf("%d",&n);
-            strcpy(cart[c],mfootwear[1]);
-            x++;
-            amnt[i]=MSLIPPERS*n;
-            bill=bill+MSLIPPERS;
+            if(mstocks[MSLIPPERS]>0)
+            {
+                printf("\n");
+                printf("\t\tEnter the no.of Slippers you want to buy:");
+                scanf("%d",&n);
+                if (mstocks[MSLIPPERS]-n > 0)
+                {
+                    mstocks[MSLIPPERS]-=n;
+                }
+                else
+                {
+                    printf("Only %d Slippers is available, will add this in cart\n",mstocks[MSLIPPERS]);
+                    n=mstocks[MSLIPPERS];
+                    mstocks[MSLIPPERS]=0;
+                }
+                strcpy(cart[c],mfootwear[1]);
+                count[c]=n;
+                x++;
+                numItems++;
+                Items[numItems].quantity = n;
+                Items[numItems].cost=mcost[MSLIPPERS]*n;
+                strcpy(Items[numItems].itemname,"Men Slippers");
+            }
+            else
+                printf("No Stock available\n");
         }
         else if(c1==3)
         {
-            printf("\n");
-            printf("\t\tEnter the no.of Formal shoes you want to buy:");
-            scanf("%d",&n);
-            strcpy(cart[c],mfootwear[2]);
-            x++;
-            amnt[i]=MFORMALSHOES*n;
-            bill=bill+MFORMALSHOES;
+            if(mstocks[MFORMALSHOES]>0)
+            {
+                printf("\n");
+                printf("\t\tEnter the no.of Formal shoes you want to buy:");
+                scanf("%d",&n);
+                if (mstocks[MFORMALSHOES]-n > 0)
+                {
+                    mstocks[MFORMALSHOES]-=n;
+                }
+                else
+                {
+                    printf("Only %d Formal shoes is available, will add this in cart\n",mstocks[MFORMALSHOES]);
+                    n=mstocks[MFORMALSHOES];
+                    mstocks[MFORMALSHOES]=0;
+                }
+                strcpy(cart[c],mfootwear[2]);
+                count[c]=n;
+                x++;
+                numItems++;
+                Items[numItems].quantity = n;
+                Items[numItems].cost=mcost[MFORMALSHOES]*n;
+                strcpy(Items[numItems].itemname,"Men Formal shoes");
+            }
+            else
+                printf("No Stock available\n");
         }
         else
         {
@@ -315,7 +548,4 @@ int mofootwear(char mfootwear[4][10])
         }
         while(ans==1);
         printbill(name,email,city,phone,cart,n,amnt);
-        printf("\n\n\t\t THE TOTAL AMOUNT IS : %d",bill);
-        printf("\n\n\t\t THANK YOU FOR SHOPPING :)");
-        printf("\n\n\t\t\t --------------------------------------------n");
 }

@@ -8,7 +8,12 @@ char gender[10];
 char email[20];
 char city[30];
 long phone;
-int bill;
+typedef struct billentry
+{
+    char itemname[20];
+    int quantity;
+    int cost;
+};
 //creating functions for different categories
 int womenswear();
 int wotopwear();

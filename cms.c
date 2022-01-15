@@ -6,6 +6,8 @@
 
 int choice;
 int i;
+extern struct billentry Items[20];
+extern int numItems;
 char wtopwear[4][10]={"1.Tshirts","2.Shirts","3.Dress","4.Jackets"};
 char wbottomwear[4][10]={"1.Jeans","2.Shorts","3.Pants","4.Skirts"};
 char waccessories[6][20]={"1.Necklace","2.Earrings","3.Rings","4.Hairties","5.Belt","6.Watch"};
@@ -17,14 +19,31 @@ char maccessories[3][10]={"1.Belts","2.wallet","3.watch"};
 char cart[30][30];
 char clothing[6];
 //creating function for printing the bill
-int printbill(char name[50],char email[20],char city[30],int phone,int bill)
+int printbill(char name[50],char email[20],char city[30],int phone)
 {
+    int bill=0;
     printf("\n\n\t\t\t---------------------------------------------\n");
     printf("\n\n\t\t\t------------ CLOTHING STORE BILL ------------");
     printf("\n\n\t\t NAME OF THE CUSTOMER: %s",name);
     printf("\n\n\t\t EMAIL: %s@gmail.com",email);
     printf("\n\n\t\t ADDRESS: %s",city);
-    printf("\n\n\t\t PHONE NUMBER: %d",phone);
+    printf("\n\n\t\t PHONE NUMBER: %d\n",phone);
+    printf("\n\n\t\t\t\t\t\t\tBILL");
+    printf(" \n\n\t\tItem Name");
+    printf(" \t\t\tItem Quantity");
+    printf(" \t\tItem Cost");
+    for(i=1;i<=numItems;i++)
+    {
+        printf(" \n\n\t\t%s",Items[i].itemname);
+        printf("\t");
+        printf(" \t\t%d",Items[i].quantity);
+        printf("\t");
+        printf(" \t\t%d\n",Items[i].cost);
+        bill=bill+Items[i].cost;
+    }
+    printf("\n\n\t\t THE TOTAL AMOUNT IS : %d",bill);
+    printf("\n\n\t\t THANK YOU FOR SHOPPING :)");
+    printf("\n\n\t\t\t --------------------------------------------\n");
 }
 //main function
 int main()
@@ -159,15 +178,15 @@ int main()
                         scanf("%d",&choice);
                         break;
                     }
-                    }//end of switch
+                }//end of switch
             break;
         }//end of case1
-            case 2:
+        case 2:
+        {
+            int ansm;
+            i=menswear();
+            switch(i)
             {
-                int ansm;
-                i=menswear();
-                switch(i)
-                {
                     case 1:
                     {
                             printf("\t\tThe men topwear available are: \n");
